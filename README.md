@@ -1,2 +1,2 @@
 # CozyFarm
- A 2D farming game using beautiful assets by shubibubi @ itch.io
+ A 2D farming game written using Monogame & beautiful assets by shubibubi @ itch.io
