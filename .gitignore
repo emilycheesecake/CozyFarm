@@ -1,3 +1,5 @@
 assets/
 CozyFarm.DesktopClient/Content/
 CozyFarm.DesktopClient/bin/
+.vs/
+CozyFarm.DesktopClient/obj/
