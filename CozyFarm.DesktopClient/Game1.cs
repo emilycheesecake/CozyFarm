@@ -20,6 +20,7 @@ namespace CozyFarm.DesktopClient
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            TargetElapsedTime = System.TimeSpan.FromSeconds(1d / 60d);
         }
 
         protected override void Initialize()
@@ -27,7 +28,7 @@ namespace CozyFarm.DesktopClient
             // TODO: Add your initialization logic here
             var viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, 800, 480);
             camera = new OrthographicCamera(viewportAdapter);
-
+            //camera.Zoom = 2;
             _inputManager = new InputManager(this);
             _gsm = new GameStateManager(this, _inputManager);
             _mapManager = new MapManager(_gsm);
@@ -60,8 +61,8 @@ namespace CozyFarm.DesktopClient
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            _gsm.DrawState(_spriteBatch);
             _mapManager.Draw();
+            _gsm.DrawState(_spriteBatch);
             base.Draw(gameTime);
         }
     }

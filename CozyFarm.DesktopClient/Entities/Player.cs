@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace CozyFarm.DesktopClient
 {
@@ -62,7 +63,10 @@ namespace CozyFarm.DesktopClient
 
             currentAnimation.Update(gameTime);
 
-            _gsm.GetCamera().Position = Vector2.SmoothStep(_gsm.GetCamera().Position, Position, 5.0f);
+            //Makes camera smoothly follow player
+            //Rounding to nearest int to prevent weird seams showing up in between tiles (i'll figure it out later maybe?)
+            Vector2 FixedPosition = new Vector2(Position.X - 400, Position.Y - 240);
+            _gsm.GetCamera().Move(Vector2.Round((FixedPosition - _gsm.GetCamera().Position) * (float)gameTime.ElapsedGameTime.TotalSeconds));
             
         }
 
