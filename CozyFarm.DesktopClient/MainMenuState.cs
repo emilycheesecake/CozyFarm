@@ -34,8 +34,9 @@ namespace CozyFarm.DesktopClient
 
         public override void Draw(SpriteBatch sb)
         {
+            Debug.WriteLine(sb.GraphicsDevice.DisplayMode.Width);
             sb.Begin();
-            sb.Draw(menuSheet, new Vector2(100, 100), startButton, Color.White);
+            sb.Draw(menuSheet, new Vector2(sb.GraphicsDevice.Adapter.CurrentDisplayMode.Width- 20, 100), startButton, Color.White);
             sb.Draw(menuSheet, new Vector2(200, 100), exitButton, Color.White);
             sb.End();
         }

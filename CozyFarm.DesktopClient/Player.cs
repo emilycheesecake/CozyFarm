@@ -9,24 +9,28 @@ namespace CozyFarm.DesktopClient
 {
     internal class Player
     {
-        public Vector2 Velocity = new Vector2(0, 0);
         public int Speed = 2;
         public Vector2 Position = new Vector2(0, 0);
 
+        private GameStateManager _gsm;
+
+        #region Player Animations
         Texture2D playerSheet;
 
-        #region Player Sprite Positions
         public Animation walkDown = new Animation(0, 0, 256, 32, 8, 0.2f);
         public Animation walkUp = new Animation(0, 32, 256, 32, 8, 0.2f);
         public Animation walkRight = new Animation(0, 64, 256, 32, 8, 0.2f);
         public Animation walkLeft = new Animation(0, 96, 256, 32, 8, 0.2f);
-        #endregion
 
         public Animation currentAnimation;
+        #endregion
 
-        public Player()
+        public Player(GameStateManager gsm)
         {
+            _gsm = gsm;
             currentAnimation = walkDown;
+
+            
         }
         public void LoadContent(ContentManager c)
         {
@@ -57,11 +61,14 @@ namespace CozyFarm.DesktopClient
             }
 
             currentAnimation.Update(gameTime);
+
+            _gsm.GetCamera().Position = Vector2.SmoothStep(_gsm.GetCamera().Position, Position, 5.0f);
+            
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sb.Begin();
+            sb.Begin(transformMatrix: _gsm.GetCamera().GetViewMatrix());
             sb.Draw(playerSheet, Position, currentAnimation.frameRects[currentAnimation.currentFrame], Color.White);
             sb.End();
         }

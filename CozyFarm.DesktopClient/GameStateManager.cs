@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -81,5 +82,8 @@ namespace CozyFarm.DesktopClient
                 g.LoadContent(c);
             }
         }
+
+        public OrthographicCamera GetCamera() { return game.camera; }
+        public Game1 GetGame() { return game; }
     }
 }

@@ -17,7 +17,7 @@ namespace CozyFarm.DesktopClient
         {
             this.gsm = gsm;
             this.inputManager = inputManager;
-            player = new Player();
+            player = new Player(gsm);
         }
 
         public override void LoadContent(ContentManager c)

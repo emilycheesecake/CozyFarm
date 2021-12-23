@@ -41,7 +41,6 @@ namespace CozyFarm.DesktopClient
             count += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (count >= delay)
             {
-                Debug.WriteLine(currentFrame);
                 if (currentFrame + 1 == frameCount)
                     currentFrame = 0;
                 else

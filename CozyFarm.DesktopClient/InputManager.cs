@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
 
 namespace CozyFarm.DesktopClient
 {
@@ -12,8 +13,11 @@ namespace CozyFarm.DesktopClient
         List<Action> inputActions;
         public Action currentAction;
 
-        public InputManager()
+        private Game1 _game;
+
+        public InputManager(Game1 game)
         {
+            _game = game;
             inputActions = Keymap.LoadKeymap();
         }
 
@@ -61,6 +65,12 @@ namespace CozyFarm.DesktopClient
                 return GetActionByName(actionName).Pressed;
             else
                 return false;
+        }
+
+        public Vector2 GetMouseWorldPosition()
+        {
+            var mouseState = Mouse.GetState();
+            return _game.camera.ScreenToWorld(new Vector2(mouseState.X, mouseState.Y));
         }
     }
 }
