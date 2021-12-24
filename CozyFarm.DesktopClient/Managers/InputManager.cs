@@ -9,7 +9,6 @@ namespace CozyFarm.DesktopClient
 {
     internal class InputManager
     {
-        Keymap keymap;
         List<Action> inputActions;
         public Action currentAction;
 
