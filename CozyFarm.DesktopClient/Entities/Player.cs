@@ -8,12 +8,15 @@ using System.Diagnostics;
 
 namespace CozyFarm.DesktopClient
 {
-    internal class Player
+    internal class Player : Entity
     {
-        public int Speed = 2;
-        public Vector2 Position = new Vector2(0, 0);
+        public override string Type => "PLAYER";
+
+        public int Speed = 100;
+        public override Vector2 Position { get; set; } = new Vector2(0, 0);
 
         private GameStateManager _gsm;
+        private Vector2 Velocity = new Vector2(0, 0);
 
         #region Player Animations
         Texture2D playerSheet;
@@ -30,38 +33,43 @@ namespace CozyFarm.DesktopClient
         {
             _gsm = gsm;
             currentAnimation = walkDown;
-
-            
         }
+
         public void LoadContent(ContentManager c)
         {
             playerSheet = c.Load<Texture2D>("characters/_greyscale/char_grey");
         }
 
-        public void Update(GameTime gameTime, InputManager inputManager)
+        public override void Update(GameTime gameTime, InputManager inputManager)
         {
+            Velocity = Vector2.Zero;
+
             if (inputManager.IsActionPressed("move_left"))
             {
-                Position.X -= Speed;
+                Velocity.X = -Speed;
                 currentAnimation = walkLeft;
             }
             if (inputManager.IsActionPressed("move_right"))
             {
-                Position.X += Speed;
+                Velocity.X = Speed;
                 currentAnimation = walkRight;
             }
             if (inputManager.IsActionPressed("move_up"))
             {
-                Position.Y -= Speed;
+                Velocity.Y = -Speed;
                 currentAnimation = walkUp;
             }
             if (inputManager.IsActionPressed("move_down"))
             {
-                Position.Y += Speed;
+                Velocity.Y = Speed;
                 currentAnimation = walkDown;
             }
 
-            currentAnimation.Update(gameTime);
+            Position += Velocity  * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            //Only update animation when player is moving
+            if(inputManager.IsMovementInput())
+                currentAnimation.Update(gameTime);
 
             //Makes camera smoothly follow player
             //Rounding to nearest int to prevent weird seams showing up in between tiles (i'll figure it out later maybe?)
@@ -70,7 +78,7 @@ namespace CozyFarm.DesktopClient
             
         }
 
-        public void Draw(SpriteBatch sb)
+        public override void Draw(SpriteBatch sb)
         {
             sb.Begin(transformMatrix: _gsm.GetCamera().GetViewMatrix());
             sb.Draw(playerSheet, Position, currentAnimation.frameRects[currentAnimation.currentFrame], Color.White);

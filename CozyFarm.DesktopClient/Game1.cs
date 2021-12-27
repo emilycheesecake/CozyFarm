@@ -12,7 +12,6 @@ namespace CozyFarm.DesktopClient
         private SpriteBatch _spriteBatch;
         private GameStateManager _gsm;
         private InputManager _inputManager;
-        private MapManager _mapManager;
         public OrthographicCamera camera;
 
         public Game1()
@@ -31,7 +30,6 @@ namespace CozyFarm.DesktopClient
             //camera.Zoom = 2;
             _inputManager = new InputManager(this);
             _gsm = new GameStateManager(this, _inputManager);
-            _mapManager = new MapManager(_gsm);
             base.Initialize();
         }
 
@@ -41,7 +39,6 @@ namespace CozyFarm.DesktopClient
 
             // TODO: use this.Content to load your game content here
             _gsm.LoadContent(this.Content);
-            _mapManager.LoadContent(this.Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -52,7 +49,6 @@ namespace CozyFarm.DesktopClient
             // TODO: Add your update logic here
             _gsm.UpdateState(gameTime);
             _inputManager.Update();
-            _mapManager.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -61,7 +57,6 @@ namespace CozyFarm.DesktopClient
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            _mapManager.Draw();
             _gsm.DrawState(_spriteBatch);
             base.Draw(gameTime);
         }

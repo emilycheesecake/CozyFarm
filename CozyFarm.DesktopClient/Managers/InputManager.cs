@@ -7,6 +7,10 @@ using Microsoft.Xna.Framework;
 
 namespace CozyFarm.DesktopClient
 {
+    /// <summary>
+    /// Class for managing custom input "actions"
+    /// I just like Godot's input lol
+    /// </summary>
     internal class InputManager
     {
         List<Action> inputActions;
@@ -65,7 +69,14 @@ namespace CozyFarm.DesktopClient
             else
                 return false;
         }
-
+        /// <summary>
+        /// Returns true if any movement actions defined below are pressed.
+        /// </summary>
+        /// <returns></returns>
+        public bool IsMovementInput()
+        {
+            return (IsActionPressed("move_left") || IsActionPressed("move_right") || IsActionPressed("move_up") || IsActionPressed("move_down"));
+        }
         public Vector2 GetMouseWorldPosition()
         {
             var mouseState = Mouse.GetState();

@@ -9,8 +9,8 @@ namespace CozyFarm.DesktopClient
     internal abstract class Entity
     {
         public abstract string Type { get; }
-        public Vector2 Position { get; set; }
-        public abstract void Update(GameTime gameTime);
+        public abstract Vector2 Position { get; set; }
+        public abstract void Update(GameTime gameTime, InputManager inputManager);
         public abstract void Draw(SpriteBatch sb);
     }
 }

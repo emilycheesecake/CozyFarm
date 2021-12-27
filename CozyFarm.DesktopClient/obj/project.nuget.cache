@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "MtvxPABPNreN4NaNyurWg/HqdCW/1Gmd9atJKLmOliJ9XVIjHgl4VKjQLDKRT0qyxz0W3iwewJtiF5LBGCYaGQ==",
+  "dgSpecHash": "PjOAoyEJrdV7owHlcXqb4T43TiSuDotqpXV2Yz8bxDajOwgZCLz5aRM/PhTgZrLJ5nMh9zXZDZyJPFD8jjjYjQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\emily\\Documents\\Projects\\CozyFarmMono\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\emily\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
     "C:\\Users\\emily\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
     "C:\\Users\\emily\\.nuget\\packages\\monogame.extended\\3.8.0\\monogame.extended.3.8.0.nupkg.sha512",
+    "C:\\Users\\emily\\.nuget\\packages\\monogame.extended.collisions\\3.8.0\\monogame.extended.collisions.3.8.0.nupkg.sha512",
     "C:\\Users\\emily\\.nuget\\packages\\monogame.extended.content.pipeline\\3.8.0\\monogame.extended.content.pipeline.3.8.0.nupkg.sha512",
     "C:\\Users\\emily\\.nuget\\packages\\monogame.extended.graphics\\3.8.0\\monogame.extended.graphics.3.8.0.nupkg.sha512",
     "C:\\Users\\emily\\.nuget\\packages\\monogame.extended.tiled\\3.8.0\\monogame.extended.tiled.3.8.0.nupkg.sha512",
