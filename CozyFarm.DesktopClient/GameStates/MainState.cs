@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CozyFarm.DesktopClient.Tilemap;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -12,6 +13,8 @@ namespace CozyFarm.DesktopClient
         private GameStateManager gsm;
         private InputManager inputManager;
         private Player player;
+        private Map testMap;
+        private Texture2D tilesheet;
 
         public MainState(GameStateManager gsm, InputManager inputManager) : base(gsm, inputManager)
         {
@@ -22,6 +25,9 @@ namespace CozyFarm.DesktopClient
 
         public override void LoadContent(ContentManager c)
         {
+            tilesheet = c.Load<Texture2D>("tiles/tiles");
+            testMap = new Map(tilesheet);
+            testMap.LoadMap("test.map");
             player.LoadContent(c);
         }
 
@@ -32,6 +38,7 @@ namespace CozyFarm.DesktopClient
 
         public override void Draw(SpriteBatch sb)
         {
+            testMap.Draw(sb);
             player.Draw(sb);
         }
 

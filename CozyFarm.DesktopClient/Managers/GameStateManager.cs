@@ -72,7 +72,9 @@ namespace CozyFarm.DesktopClient
         /// <param name="sb">SpriteBatch</param>
         public void DrawState(SpriteBatch sb)
         {
+            sb.Begin(transformMatrix: GetCamera().GetViewMatrix());
             states.Peek().Draw(sb);
+            sb.End();
         }
 
         public void LoadContent(ContentManager c)

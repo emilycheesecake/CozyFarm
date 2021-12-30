@@ -80,9 +80,7 @@ namespace CozyFarm.DesktopClient
 
         public override void Draw(SpriteBatch sb)
         {
-            sb.Begin(transformMatrix: _gsm.GetCamera().GetViewMatrix());
             sb.Draw(playerSheet, Position, currentAnimation.frameRects[currentAnimation.currentFrame], Color.White);
-            sb.End();
         }
     }
 }
