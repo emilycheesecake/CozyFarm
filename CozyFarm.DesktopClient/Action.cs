@@ -9,6 +9,8 @@ namespace CozyFarm.DesktopClient
     internal class Action
     {
         public string Name { get; }
+        public string Type { get; }
+        public string Mouse { get; }
         public bool Pressed { get; set; } = false;
         public Keys Key;
 
@@ -21,6 +23,14 @@ namespace CozyFarm.DesktopClient
         {
             this.Name = Name;
             this.Key = Key;
+            this.Type = "KEY";
+        }
+
+        public Action(string name, string mouse)
+        {
+            this.Name = name;
+            this.Type = "MOUSE";
+            this.Mouse = mouse;
         }
         
     }

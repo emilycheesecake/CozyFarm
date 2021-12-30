@@ -30,7 +30,8 @@ namespace CozyFarm.DesktopClient.Tilemap
 
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(tilesheet, Position, sourceRectangle, Color.White);
+            if (tileId != 69420)
+                sb.Draw(tilesheet, Position, map.tiles[tileId].sourceRectangle, Color.White);
         }
     }
 }

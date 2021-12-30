@@ -33,13 +33,43 @@ namespace CozyFarm.DesktopClient
 
             foreach (Action a in inputActions)
             {
-                if (state.IsKeyDown(a.Key))
+                if(a.Type == "KEY")
                 {
-                    a.Pressed = true;
-                    currentAction = a;
+                    if (state.IsKeyDown(a.Key))
+                    {
+                        a.Pressed = true;
+                        currentAction = a;
+                    }
+                    else
+                        a.Pressed = false;
                 }
-                else
-                    a.Pressed = false;
+
+                if (a.Type == "MOUSE")
+                {
+                    MouseState mouseState = Mouse.GetState();
+
+                    if (a.Mouse == "left")
+                    {
+                        if (mouseState.LeftButton == ButtonState.Pressed)
+                        {
+                            a.Pressed = true;
+                            currentAction = a;
+                        }
+                        else
+                            a.Pressed = false;
+                    }
+
+                    if (a.Mouse == "right")
+                    {
+                        if (mouseState.RightButton == ButtonState.Pressed)
+                        {
+                            a.Pressed = true;
+                            currentAction = a;
+                        }
+                        else
+                            a.Pressed = false;
+                    }
+                }
             }
         }
 
@@ -77,6 +107,8 @@ namespace CozyFarm.DesktopClient
         {
             return (IsActionPressed("move_left") || IsActionPressed("move_right") || IsActionPressed("move_up") || IsActionPressed("move_down"));
         }
+
+
         public Vector2 GetMouseWorldPosition()
         {
             var mouseState = Mouse.GetState();

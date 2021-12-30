@@ -28,12 +28,17 @@ namespace CozyFarm.DesktopClient
             tilesheet = c.Load<Texture2D>("tiles/tiles");
             testMap = new Map(tilesheet);
             testMap.LoadMap("test.map");
+            gsm.SetCurrentMap(testMap);
             player.LoadContent(c);
         }
 
         public override void Update(GameTime gameTime)
         {
+            testMap.Update(gameTime);
             player.Update(gameTime, inputManager);
+
+            if (inputManager.IsActionPressed("save_map"))
+                testMap.SaveMapToFile("test.map");
         }
 
         public override void Draw(SpriteBatch sb)

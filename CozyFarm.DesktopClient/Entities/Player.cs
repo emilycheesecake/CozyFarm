@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
+using CozyFarm.DesktopClient.Tilemap;
 
 namespace CozyFarm.DesktopClient
 {
@@ -17,6 +18,7 @@ namespace CozyFarm.DesktopClient
 
         private GameStateManager _gsm;
         private Vector2 Velocity = new Vector2(0, 0);
+        private TileSelector tileSelector;
 
         #region Player Animations
         Texture2D playerSheet;
@@ -32,12 +34,14 @@ namespace CozyFarm.DesktopClient
         public Player(GameStateManager gsm)
         {
             _gsm = gsm;
+            tileSelector = new TileSelector(_gsm);
             currentAnimation = walkDown;
         }
 
         public void LoadContent(ContentManager c)
         {
             playerSheet = c.Load<Texture2D>("characters/_greyscale/char_grey");
+            tileSelector.LoadContent(c);
         }
 
         public override void Update(GameTime gameTime, InputManager inputManager)
@@ -71,6 +75,8 @@ namespace CozyFarm.DesktopClient
             if(inputManager.IsMovementInput())
                 currentAnimation.Update(gameTime);
 
+            tileSelector.Update(gameTime, inputManager);
+
             //Makes camera smoothly follow player
             //Rounding to nearest int to prevent weird seams showing up in between tiles (i'll figure it out later maybe?)
             Vector2 FixedPosition = new Vector2(Position.X - 400, Position.Y - 240);
@@ -80,6 +86,7 @@ namespace CozyFarm.DesktopClient
 
         public override void Draw(SpriteBatch sb)
         {
+            tileSelector.Draw(sb);
             sb.Draw(playerSheet, Position, currentAnimation.frameRects[currentAnimation.currentFrame], Color.White);
         }
     }

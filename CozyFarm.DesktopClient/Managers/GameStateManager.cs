@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CozyFarm.DesktopClient.Tilemap;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
@@ -13,6 +14,7 @@ namespace CozyFarm.DesktopClient
         private Game1 game { get; }
         private InputManager inputManager { get; }
         private Stack<GameState> states = new Stack<GameState>();
+        private Map map;
         public GameStateManager(Game1 game, InputManager inputManager)
         {
             this.game = game;
@@ -85,7 +87,13 @@ namespace CozyFarm.DesktopClient
             }
         }
 
+        public void SetCurrentMap(Map map)
+        {
+            this.map = map;
+        }
+
         public OrthographicCamera GetCamera() { return game.camera; }
         public Game1 GetGame() { return game; }
+        public Map GetCurrentMap() { return map; }
     }
 }
