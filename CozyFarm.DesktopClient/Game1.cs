@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CozyFarm.DesktopClient.Utilities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
@@ -25,7 +26,11 @@ namespace CozyFarm.DesktopClient
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            var viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, 800, 480);
+            _graphics.PreferredBackBufferWidth = Global.SCREEN_WIDTH;
+            _graphics.PreferredBackBufferHeight = Global.SCREEN_HEIGHT;
+            _graphics.ApplyChanges();
+
+            var viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, Global.SCREEN_WIDTH, Global.SCREEN_HEIGHT);
             camera = new OrthographicCamera(viewportAdapter);
             //camera.Zoom = 2;
             _inputManager = new InputManager(this);
@@ -38,6 +43,7 @@ namespace CozyFarm.DesktopClient
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            CozyConsole.LoadContent(this.Content);
             _gsm.LoadContent(this.Content);
         }
 
@@ -47,6 +53,7 @@ namespace CozyFarm.DesktopClient
                 Exit();
 
             // TODO: Add your update logic here
+            CozyConsole.Update(gameTime);
             _gsm.UpdateState(gameTime);
             _inputManager.Update();
             base.Update(gameTime);
@@ -58,6 +65,9 @@ namespace CozyFarm.DesktopClient
 
             // TODO: Add your drawing code here
             _gsm.DrawState(_spriteBatch);
+            _spriteBatch.Begin();
+            CozyConsole.Draw(_spriteBatch);
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }

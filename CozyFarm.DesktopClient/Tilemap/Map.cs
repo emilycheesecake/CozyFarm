@@ -13,8 +13,8 @@ namespace CozyFarm.DesktopClient.Tilemap
     {
         int[,] mapData;
         Tile[,] tileArray;
-        int mapW = 100, mapH = 100;
-        int tileW = 16, tileH = 16;
+        public int mapW = 100, mapH = 100;
+        public int tileW = 16, tileH = 16;
         Texture2D tilesheet;
         
         public List<Tile> tiles;

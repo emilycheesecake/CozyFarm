@@ -38,7 +38,11 @@ namespace CozyFarm.DesktopClient
             player.Update(gameTime, inputManager);
 
             if (inputManager.IsActionPressed("save_map"))
-                testMap.SaveMapToFile("test.map");
+            {
+                string fileName = "test.map";
+                testMap.SaveMapToFile(fileName);
+                CozyConsole.WriteLine("Saved map to '" + fileName + "'.");
+            }
         }
 
         public override void Draw(SpriteBatch sb)

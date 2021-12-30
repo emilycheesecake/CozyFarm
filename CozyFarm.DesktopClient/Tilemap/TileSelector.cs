@@ -44,6 +44,8 @@ namespace CozyFarm.DesktopClient.Tilemap
                 tileId++;
             if (inputManager.IsActionPressed("tile_dec"))
                 tileId--;
+
+            //CozyConsole.WriteLine("Selected Tile: " + tileId.ToString());
         }
 
         public void Draw(SpriteBatch sb)
