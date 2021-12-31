@@ -97,5 +97,7 @@ namespace CozyFarm.DesktopClient
             tileSelector.Draw(sb);
             sb.Draw(playerSheet, Position, currentAnimation.frameRects[currentAnimation.currentFrame], Color.White);
         }
+
+        public void SetTileSelector(bool enabled) { tileSelector.Enabled = enabled; }
     }
 }

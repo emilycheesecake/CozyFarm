@@ -19,7 +19,7 @@ namespace CozyFarm.DesktopClient
         {
             font = c.Load<SpriteFont>("testfont");
         }
-
+        
         public static void Update(GameTime gameTime)
         {
             if(Enabled)

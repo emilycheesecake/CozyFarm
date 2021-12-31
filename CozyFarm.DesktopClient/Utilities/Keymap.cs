@@ -26,6 +26,7 @@ namespace CozyFarm.DesktopClient
             inputActions.Add(new Action("destroy", "left"));
             inputActions.Add(new Action("interact", "right"));
             inputActions.Add(new Action("save_map", Keys.Y));
+            inputActions.Add(new Action("tile_menu", Keys.Tab));
             inputActions.Add(new Action("tile_inc", Keys.E));
             inputActions.Add(new Action("tile_dec", Keys.Q));
 

@@ -17,6 +17,8 @@ namespace CozyFarm.DesktopClient
         public Action currentAction;
 
         private Game1 _game;
+        private KeyboardState previousKeyboardState, currentKeyboardState;
+        private MouseState previousMouseState, currentMouseState;
 
         public InputManager(Game1 game)
         {
@@ -29,13 +31,14 @@ namespace CozyFarm.DesktopClient
         /// </summary>
         public void Update()
         {
-            KeyboardState state = Keyboard.GetState();
+            previousKeyboardState = currentKeyboardState;
+            currentKeyboardState = Keyboard.GetState();
 
             foreach (Action a in inputActions)
             {
                 if(a.Type == "KEY")
                 {
-                    if (state.IsKeyDown(a.Key))
+                    if (currentKeyboardState.IsKeyDown(a.Key))
                     {
                         a.Pressed = true;
                         currentAction = a;
@@ -46,11 +49,12 @@ namespace CozyFarm.DesktopClient
 
                 if (a.Type == "MOUSE")
                 {
-                    MouseState mouseState = Mouse.GetState();
+                    previousMouseState = currentMouseState;
+                    currentMouseState = Mouse.GetState();
 
                     if (a.Mouse == "left")
                     {
-                        if (mouseState.LeftButton == ButtonState.Pressed)
+                        if (currentMouseState.LeftButton == ButtonState.Pressed)
                         {
                             a.Pressed = true;
                             currentAction = a;
@@ -61,7 +65,7 @@ namespace CozyFarm.DesktopClient
 
                     if (a.Mouse == "right")
                     {
-                        if (mouseState.RightButton == ButtonState.Pressed)
+                        if (currentMouseState.RightButton == ButtonState.Pressed)
                         {
                             a.Pressed = true;
                             currentAction = a;
@@ -99,6 +103,28 @@ namespace CozyFarm.DesktopClient
             else
                 return false;
         }
+
+        public bool IsActionJustPressed(string actionName)
+        {
+            if (GetActionByName(actionName) != null)
+            {
+                Action a = GetActionByName(actionName);
+                if (a.Type == "KEY")
+                {
+                    return currentKeyboardState.IsKeyDown(a.Key) && !previousKeyboardState.IsKeyDown(a.Key);
+                }
+
+                if (a.Type == "MOUSE")
+                {
+                    if (a.Mouse == "left")
+                        return currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton != ButtonState.Pressed;
+                    if (a.Mouse == "right")
+                        return currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton != ButtonState.Pressed;
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// Returns true if any movement actions defined below are pressed.
         /// </summary>

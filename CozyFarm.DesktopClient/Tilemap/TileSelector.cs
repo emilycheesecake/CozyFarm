@@ -15,6 +15,7 @@ namespace CozyFarm.DesktopClient.Tilemap
         public GameStateManager gsm;
         public Tile selectedTile;
         public int tileId = 69;
+        public bool Enabled = true;
 
         public TileSelector(GameStateManager gsm)
         {
@@ -28,30 +29,36 @@ namespace CozyFarm.DesktopClient.Tilemap
 
         public void Update(GameTime gameTime, InputManager inputManager)
         {
-            Vector2 mousePosition = inputManager.GetMouseWorldPosition();
-            selectedTile = gsm.GetCurrentMap().GetTileAt(mousePosition);
+            if (Enabled)
+            {
+                Vector2 mousePosition = inputManager.GetMouseWorldPosition();
+                selectedTile = gsm.GetCurrentMap().GetTileAt(mousePosition);
 
-            Position = selectedTile.Position;
+                Position = selectedTile.Position;
 
-            //Click Input
-            if (inputManager.IsActionPressed("interact"))
-                selectedTile.tileId = tileId;
+                //Click Input
+                if (inputManager.IsActionPressed("interact"))
+                    selectedTile.tileId = tileId;
 
-            if (inputManager.IsActionPressed("destroy"))
-                selectedTile.tileId = 69420;
+                if (inputManager.IsActionPressed("destroy"))
+                    selectedTile.tileId = 69420;
 
-            if (inputManager.IsActionPressed("tile_inc"))
-                tileId++;
-            if (inputManager.IsActionPressed("tile_dec"))
-                tileId--;
+                if (inputManager.IsActionJustPressed("tile_inc"))
+                    tileId++;
+                if (inputManager.IsActionJustPressed("tile_dec"))
+                    tileId--;
 
-            //CozyConsole.WriteLine("Selected Tile: " + tileId.ToString());
+                //CozyConsole.WriteLine("Selected Tile: " + tileId.ToString());
+            }
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(gsm.GetCurrentMap().GetTileSheet(), Position, gsm.GetCurrentMap().GetTile(tileId).sourceRectangle, Color.White);
-            sb.Draw(texture, Position, Color.White);
+            if (Enabled)
+            {
+                sb.Draw(gsm.GetCurrentMap().GetTileSheet(), Position, gsm.GetCurrentMap().GetTile(tileId).sourceRectangle, Color.White);
+                sb.Draw(texture, Position, Color.White);
+            }
         }
     }
 }
