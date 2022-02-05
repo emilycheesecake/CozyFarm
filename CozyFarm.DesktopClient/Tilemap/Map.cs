@@ -56,7 +56,11 @@ namespace CozyFarm.DesktopClient.Tilemap
                 return bformatter.Deserialize(stream);
             }
         }
-
+        /// <summary>
+        /// Returns tile with specified id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Tile GetTile(int id)
         {
             foreach (Tile t in tiles)
@@ -82,7 +86,10 @@ namespace CozyFarm.DesktopClient.Tilemap
 
             Serialize(mapData, path);
         }
-
+        /// <summary>
+        /// Serializes map to file at specified path
+        /// </summary>
+        /// <param name="path"></param>
         public void SaveMapToFile(string path)
         {
             Serialize(mapData, path);
@@ -103,7 +110,10 @@ namespace CozyFarm.DesktopClient.Tilemap
                 }
             }
         }
-
+        /// <summary>
+        /// Update map data
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             for (int i = 0; i < mapW; i++)

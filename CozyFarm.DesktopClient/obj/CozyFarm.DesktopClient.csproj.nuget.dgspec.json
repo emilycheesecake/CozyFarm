@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\emily\\Documents\\Projects\\CozyFarmMono\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj": {}
+    "C:\\Users\\emily\\Documents\\GitHub\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\emily\\Documents\\Projects\\CozyFarmMono\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj": {
+    "C:\\Users\\emily\\Documents\\GitHub\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\emily\\Documents\\Projects\\CozyFarmMono\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj",
+        "projectUniqueName": "C:\\Users\\emily\\Documents\\GitHub\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj",
         "projectName": "CozyFarm.DesktopClient",
-        "projectPath": "C:\\Users\\emily\\Documents\\Projects\\CozyFarmMono\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj",
+        "projectPath": "C:\\Users\\emily\\Documents\\GitHub\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj",
         "packagesPath": "C:\\Users\\emily\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\emily\\Documents\\Projects\\CozyFarmMono\\CozyFarm\\CozyFarm.DesktopClient\\obj\\",
+        "outputPath": "C:\\Users\\emily\\Documents\\GitHub\\CozyFarm\\CozyFarm.DesktopClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\emily\\AppData\\Roaming\\NuGet\\NuGet.Config",

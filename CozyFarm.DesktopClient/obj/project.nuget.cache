@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PjOAoyEJrdV7owHlcXqb4T43TiSuDotqpXV2Yz8bxDajOwgZCLz5aRM/PhTgZrLJ5nMh9zXZDZyJPFD8jjjYjQ==",
+  "dgSpecHash": "2PaTlZ9qlyTq/DMXsWmzAaUzMZ0QHkLYa3R1XtYGkw1m5K4OFqRautlpVy9NBr3iY/IETGmflWz2fE+T2F0mFg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\emily\\Documents\\Projects\\CozyFarmMono\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj",
+  "projectFilePath": "C:\\Users\\emily\\Documents\\GitHub\\CozyFarm\\CozyFarm.DesktopClient\\CozyFarm.DesktopClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\emily\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
     "C:\\Users\\emily\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
